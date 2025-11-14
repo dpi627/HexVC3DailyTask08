@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🐶 狗狗歲數計算機</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>🐶 狗狗歲數計算機 🦴</h1>
+    </header>
+
+    <section class="card">
+      <label for="birthday" class="label">🎂 狗狗的出生日期：</label>
+      <input id="birthday" type="date" />
+
+      <button id="calcBtn" class="btn">開始計算</button>
+    </section>
+
+    <section id="result" class="card result hidden" aria-live="polite">
+      <p>狗狗現在約 <strong id="dogAge" class="accent">—</strong> 歲狗狗年齡，</p>
+      <p>換算成人類年齡大約是 <strong id="humanAge" class="accent">—</strong> 歲。</p>
+      <p id="note" class="note"></p>
+    </section>
+
+    <footer class="footer card">
+      <h3>📚 參考文獻</h3>
+      <p>
+        Wang T. 等，<a href="https://doi.org/10.1016/j.cels.2019.12.003" target="_blank" rel="noopener noreferrer"><em>Quantitative translation of dog-to-human aging by conserved remodeling of the DNA methylome</em></a>, Cell Systems (2019/2020)。
+      </p>
+      <div class="formula">
+        <strong>主要換算式（狗齡 → 人類年齡）：</strong><br/>
+        <code>HumanAge = 16 × ln(DogAge) + 31</code>
+      </div>
+      <p class="muted">備註：研究以拉布拉多犬為主，品種差異可能影響精確度。</p>
+    </footer>
+  </main>
+
+  <script src="lib.js"></script>
+</body>
+</html>
