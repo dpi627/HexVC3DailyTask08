@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## CLAUDE Code reponse
+
+- Alway response in zh-TW
+
 ## Project Overview
 
 This is a dog age calculator web application that converts dog years to human years using a scientifically-validated logarithmic formula based on DNA methylation research published in Cell Systems (Wang et al., 2019/2020).
