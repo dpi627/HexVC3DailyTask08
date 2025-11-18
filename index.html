@@ -7,36 +7,85 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="container">
-    <header>
-      <h1>🐶 狗狗歲數計算機 🦴</h1>
-    </header>
+  <!-- 動態背景容器 -->
+  <div id="bgContainer" class="bg-container"></div>
 
-    <section class="card">
-      <label for="birthday" class="label">🎂 狗狗的出生日期：</label>
-      <input id="birthday" type="date" />
-
-      <button id="calcBtn" class="btn">開始計算</button>
-    </section>
-
-    <section id="result" class="card result hidden" aria-live="polite">
-      <p>狗狗現在約 <strong id="dogAge" class="accent">—</strong> 歲狗狗年齡，</p>
-      <p>換算成人類年齡大約是 <strong id="humanAge" class="accent">—</strong> 歲。</p>
-      <p id="note" class="note"></p>
-    </section>
-
-    <footer class="footer card">
-      <h3>📚 參考文獻</h3>
-      <p>
-        Wang T. 等，<a href="https://doi.org/10.1016/j.cels.2019.12.003" target="_blank" rel="noopener noreferrer"><em>Quantitative translation of dog-to-human aging by conserved remodeling of the DNA methylome</em></a>, Cell Systems (2019/2020)。
-      </p>
-      <div class="formula">
-        <strong>主要換算式（狗齡 → 人類年齡）：</strong><br/>
-        <code>HumanAge = 16 × ln(DogAge) + 31</code>
+  <!-- Hero Section 輪播 -->
+  <section class="hero-section">
+    <div class="hero-carousel">
+      <img id="heroImage" src="" alt="可愛的狗狗" class="hero-image" />
+      <div class="hero-overlay">
+        <h1 class="hero-title">🐶 狗狗歲數計算機 🦴</h1>
+        <p class="hero-subtitle">科學換算 · 精準呈現</p>
       </div>
-      <p class="muted">備註：研究以拉布拉多犬為主，品種差異可能影響精確度。</p>
-    </footer>
-  </main>
+      <button id="prevBtn" class="carousel-nav prev-btn" aria-label="上一張圖片">‹</button>
+      <button id="nextBtn" class="carousel-nav next-btn" aria-label="下一張圖片">›</button>
+      <div class="carousel-indicator" id="carouselIndicator">1/5</div>
+    </div>
+  </section>
+
+  <!-- 主要內容區 -->
+  <div class="main-wrapper">
+    <main class="container">
+      <!-- 計算器卡片 -->
+      <section class="card calculator-card">
+        <label for="birthday" class="label">🎂 狗狗的出生日期：</label>
+        <input id="birthday" type="date" />
+        <button id="calcBtn" class="btn">開始計算</button>
+      </section>
+
+      <!-- 載入動畫 -->
+      <section id="loading" class="card loading hidden">
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+          <p class="loading-text">🐾 計算中...</p>
+        </div>
+      </section>
+
+      <!-- 結果顯示區 -->
+      <section id="result" class="card result hidden" aria-live="polite">
+        <p>狗狗現在約 <strong id="dogAge" class="accent">—</strong> 歲狗狗年齡，</p>
+        <p>換算成人類年齡大約是 <strong id="humanAge" class="accent">—</strong> 歲。</p>
+        <p id="note" class="note"></p>
+      </section>
+
+      <!-- 參考文獻 -->
+      <footer class="footer card">
+        <div class="footer-header">
+          <h3>📚 參考文獻</h3>
+          <button id="toggleFooter" class="toggle-footer-btn" aria-label="展開參考文獻">
+            <span class="toggle-footer-icon">👁️ 顯示</span>
+          </button>
+        </div>
+        <div id="footerContent" class="footer-content collapsed">
+          <p>
+            Wang T. 等，<a href="https://doi.org/10.1016/j.cels.2019.12.003" target="_blank" rel="noopener noreferrer"><em>Quantitative translation of dog-to-human aging by conserved remodeling of the DNA methylome</em></a>, Cell Systems (2019/2020)。
+          </p>
+          <div class="formula">
+            <strong>主要換算式（狗齡 → 人類年齡）：</strong><br/>
+            <code>HumanAge = 16 × ln(DogAge) + 31</code>
+          </div>
+          <p class="muted">備註：研究以拉布拉多犬為主，品種差異可能影響精確度。</p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- 歷史記錄面板 -->
+    <aside id="historyPanel" class="history-panel">
+      <div class="history-header">
+        <h2>📊 計算記錄</h2>
+        <button id="toggleHistory" class="toggle-btn" aria-label="收合歷史面板">
+          <span class="toggle-icon">👁️</span>
+        </button>
+      </div>
+      <div class="history-content">
+        <div id="historyList" class="history-list">
+          <p class="empty-message">尚無計算記錄</p>
+        </div>
+        <button id="clearHistory" class="clear-btn">清除所有記錄</button>
+      </div>
+    </aside>
+  </div>
 
   <script src="lib.js"></script>
 </body>
